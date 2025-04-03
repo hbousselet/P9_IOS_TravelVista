@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TitleViewSwiftUI: View {
-    var viewModel: Country
+    var viewModel: Country?
     var body: some View {
         HStack(alignment: .center) {
-            NamesViewSwiftUI(countryName: viewModel.name, capitalName: viewModel.capital)
+            NamesViewSwiftUI(countryName: viewModel?.name, capitalName: viewModel?.capital)
             Spacer()
-            RateViewSwiftUI(rate: viewModel.rate)
+            RateViewSwiftUI(rate: viewModel?.rate)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
@@ -21,15 +21,15 @@ struct TitleViewSwiftUI: View {
 }
 
 struct NamesViewSwiftUI: View {
-    let countryName: String
-    let capitalName: String
+    let countryName: String?
+    let capitalName: String?
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(countryName)
+            Text(countryName ?? "")
                 .font(.system(size: 22, weight: .medium))
                 .foregroundStyle(.customBlue)
-            Text(capitalName)
+            Text(capitalName ?? "")
                 .font(.system(size: 17))
                 .foregroundStyle(Color(UIColor.systemGray))
         }
@@ -37,9 +37,9 @@ struct NamesViewSwiftUI: View {
 }
 
 struct RateViewSwiftUI: View {
-    let rate: Int
+    let rate: Int?
     var body: some View {
-        ForEach(0..<rate) { _ in
+        ForEach(0..<(rate ?? 0)) { _ in
             Image(systemName: "star.fill")
                 .foregroundColor(.yellow)
         }

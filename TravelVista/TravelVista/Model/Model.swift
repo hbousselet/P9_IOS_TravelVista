@@ -21,7 +21,11 @@ struct Region: Codable, Identifiable {
 }
 
 // Représente toutes les informations d'un pays
-struct Country: Codable, Identifiable {
+struct Country: Codable, Identifiable, Equatable, Hashable {
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        lhs.name == rhs.name
+    }
+    
     var id: UUID = UUID()
     
     var name: String
@@ -42,7 +46,7 @@ struct Country: Codable, Identifiable {
 }
 
 // Représente les coordonnées d'une capitale
-struct Coordinates: Codable {
+struct Coordinates: Codable, Hashable {
     var latitude: Double
     var longitude: Double
 }

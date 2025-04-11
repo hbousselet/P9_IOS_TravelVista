@@ -7,45 +7,20 @@
 
 import Foundation
 
-// Représente les sections pour classer les pays
-struct Region: Codable, Identifiable {
-    var id: UUID = UUID()
-    
+struct Region: Codable {
     var name: String
     var countries: [Country]
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case countries
-    }
 }
 
-// Représente toutes les informations d'un pays
-struct Country: Codable, Identifiable, Equatable, Hashable {
-    static func == (lhs: Country, rhs: Country) -> Bool {
-        lhs.name == rhs.name
-    }
-    
-    var id: UUID = UUID()
-    
+struct Country: Codable, Hashable {
     var name: String
     var capital: String
     var description: String
     var rate: Int
     var pictureName: String
     var coordinates: Coordinates
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case capital
-        case description
-        case rate
-        case pictureName
-        case coordinates
-    }
 }
 
-// Représente les coordonnées d'une capitale
 struct Coordinates: Codable, Hashable {
     var latitude: Double
     var longitude: Double

@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct TitleViewSwiftUI: View {
-    var viewModel: Country?
+    let country: Country
+    
     var body: some View {
         HStack(alignment: .center) {
-            NamesViewSwiftUI(countryName: viewModel?.name, capitalName: viewModel?.capital)
+            NamesViewSwiftUI(countryName: country.name, capitalName: country.capital)
             Spacer()
-            RateViewSwiftUI(rate: viewModel?.rate)
+            RateViewSwiftUI(rate: country.rate)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
@@ -21,15 +22,15 @@ struct TitleViewSwiftUI: View {
 }
 
 struct NamesViewSwiftUI: View {
-    let countryName: String?
-    let capitalName: String?
+    let countryName: String
+    let capitalName: String
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(countryName ?? "")
+            Text(countryName)
                 .font(.system(size: 22, weight: .medium))
                 .foregroundStyle(.customBlue)
-            Text(capitalName ?? "")
+            Text(capitalName)
                 .font(.system(size: 17))
                 .foregroundStyle(Color(UIColor.systemGray))
         }
@@ -37,9 +38,10 @@ struct NamesViewSwiftUI: View {
 }
 
 struct RateViewSwiftUI: View {
-    let rate: Int?
+    let rate: Int
+    
     var body: some View {
-        ForEach(0..<(rate ?? 0)) { _ in
+        ForEach(0..<(rate)) { _ in
             Image(systemName: "star.fill")
                 .foregroundColor(.yellow)
         }
@@ -48,5 +50,5 @@ struct RateViewSwiftUI: View {
 }
 
 #Preview {
-    TitleViewSwiftUI(viewModel: Country(name: "France", capital: "Paris", description: "COucouc", rate: 4, pictureName: "Bla", coordinates: Coordinates(latitude: 123, longitude: 13)))
+    TitleViewSwiftUI(country: Country(name: "France", capital: "Paris", description: "COucouc", rate: 4, pictureName: "Bla", coordinates: Coordinates(latitude: 123, longitude: 13)))
 }

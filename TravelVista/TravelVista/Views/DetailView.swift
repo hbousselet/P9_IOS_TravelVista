@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 struct DetailView: UIViewControllerRepresentable {
-    var country: Country?
+    let country: Country
 
     func makeUIViewController(context: Context)  ->  DetailViewController {
         guard let detailVC = UIStoryboard(name: "Main", bundle: .main)

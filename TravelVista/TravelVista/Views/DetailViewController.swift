@@ -21,21 +21,22 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var rateView: UIView!
     
     var country: Country?
-    private lazy var hostingViewController: UIHostingController = UIHostingController(rootView: TitleViewSwiftUI(viewModel: country))
+    private var hostingViewController: UIHostingController<TitleViewSwiftUI>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupHostingViewController()
-        
+                
         self.setCustomDesign()
 
         if let country = self.country {
+            hostingViewController = UIHostingController(rootView: TitleViewSwiftUI(country: country))
+            setupHostingViewController()
             self.setUpData(country: country)
         }
     }
     
     private func setupHostingViewController() {
+        guard let hostingViewController else { return }
         self.addChild(hostingViewController)
         self.view.addSubview(hostingViewController.view)
         hostingViewController.didMove(toParent: self)
@@ -43,6 +44,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func setupConstraintForHostingVC() {
+        guard let hostingViewController else { return }
         hostingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             hostingViewController.view.topAnchor.constraint(equalTo: imageView.bottomAnchor),

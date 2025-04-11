@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import SwiftUI
 
 class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var countryNameLabel: UILabel!
@@ -21,12 +20,9 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var rateView: UIView!
     
     var country: Country?
-    private lazy var hostingViewController: UIHostingController = UIHostingController(rootView: TitleViewSwiftUI(viewModel: country))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupHostingViewController()
         
         self.setCustomDesign()
 
@@ -35,31 +31,15 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    private func setupHostingViewController() {
-        self.addChild(hostingViewController)
-        self.view.addSubview(hostingViewController.view)
-        hostingViewController.didMove(toParent: self)
-        setupConstraintForHostingVC()
-    }
-    
-    private func setupConstraintForHostingVC() {
-        hostingViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingViewController.view.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            hostingViewController.view.bottomAnchor.constraint(equalTo: descriptionTextView.topAnchor),
-            hostingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            hostingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        titleView.isHidden = true
-        rateView.isHidden = true
-    }
-    
     private func setUpData(country: Country) {
         self.title = country.name
         
+        self.countryNameLabel.text = country.name
+        self.capitalNameLabel.text = country.capital
         self.imageView.image = UIImage(named: country.pictureName )
         self.descriptionTextView.text = country.description
         
+        self.setRateStars(rate: country.rate)
         self.setMapLocation(lat: self.country?.coordinates.latitude ?? 28.394857,
                             long: self.country?.coordinates.longitude ?? 84.124008)
     }

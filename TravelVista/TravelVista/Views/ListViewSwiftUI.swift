@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ListViewSwiftUI: View {
     let regions: [Region]
-//    @State private var singleSelection: UUID?
     
     var body: some View {
         NavigationStack {
-            List() {
-                ForEach(regions) { region in
+            List {
+                ForEach(regions, id: \.name) { region in
                     Section(header: Text(region.name)) {
-                        ForEach(region.countries) { country in
+                        ForEach(region.countries, id: \.name) { country in
                             NavigationLink(value: country, label: {
                                 listContent(for: country)
                             })

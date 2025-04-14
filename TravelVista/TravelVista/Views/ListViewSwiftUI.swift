@@ -9,35 +9,45 @@ import SwiftUI
 
 struct ListViewSwiftUI: View {
     let regions: [Region]
-    @State private var singleSelection: UUID?
     
     var body: some View {
-        List(selection: $singleSelection) {
-            ForEach(regions) { region in
-                Section(header: Text(region.name)) {
-                    ForEach(region.countries) { country in
-                        HStack {
-                            Image(country.pictureName)
-                                .resizable()
-                                .frame(width: 52, height: 52)
-                                .scaledToFit()
-                                .clipShape(Circle())
-                            VStack(alignment: .leading) {
-                                Text(country.name)
-                                    .font(.system(size: 20))
-                                    .foregroundStyle(.customBlue)
-                                Text(country.capital)
-                                    .font(.system(size: 15))
-                            }
-                            Spacer()
-                            HStack {
-                                Text(String(country.rate))
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.customSand)
-                            }
+        NavigationStack {
+            List {
+                ForEach(regions, id: \.name) { region in
+                    Section(header: Text(region.name)) {
+                        ForEach(region.countries, id: \.name) { country in
+                            NavigationLink(value: country, label: {
+                                listContent(for: country)
+                            })
                         }
                     }
                 }
+            }
+            .navigationDestination(for: Country.self) { country in
+                DetailView(country: country)
+            }
+        }
+    }
+    
+    private func listContent(for country: Country) -> some View {
+        HStack {
+            Image(country.pictureName)
+                .resizable()
+                .frame(width: 52, height: 52)
+                .scaledToFit()
+                .clipShape(Circle())
+            VStack(alignment: .leading) {
+                Text(country.name)
+                    .font(.system(size: 20))
+                    .foregroundStyle(.customBlue)
+                Text(country.capital)
+                    .font(.system(size: 15))
+            }
+            Spacer()
+            HStack {
+                Text(String(country.rate))
+                Image(systemName: "star.fill")
+                    .foregroundColor(.customSand)
             }
         }
     }

@@ -16,8 +16,9 @@
 		42B90C1A2B2A055B00779364 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B90C182B2A055B00779364 /* Main.storyboard */; };
 		42B90C1C2B2A056000779364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B90C1B2B2A056000779364 /* Assets.xcassets */; };
 		42B90C1F2B2A056000779364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B90C1D2B2A056000779364 /* LaunchScreen.storyboard */; };
-		A3C261F62D9E908400105F4A /* ListViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C261F52D9E908400105F4A /* ListViewSwiftUI.swift */; };
 		A3C261F42D9E7E6E00105F4A /* TitleViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C261F32D9E7E6E00105F4A /* TitleViewSwiftUI.swift */; };
+		A3C261F62D9E908400105F4A /* ListViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C261F52D9E908400105F4A /* ListViewSwiftUI.swift */; };
+		A3C261F82D9EC08100105F4A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C261F72D9EC08100105F4A /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		42B90C1B2B2A056000779364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42B90C1E2B2A056000779364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42B90C202B2A056000779364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3C261F52D9E908400105F4A /* ListViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewSwiftUI.swift; sourceTree = "<group>"; };
 		A3C261F32D9E7E6E00105F4A /* TitleViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewSwiftUI.swift; sourceTree = "<group>"; };
+		A3C261F52D9E908400105F4A /* ListViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewSwiftUI.swift; sourceTree = "<group>"; };
+		A3C261F72D9EC08100105F4A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				424C31BF2B30A39B00279238 /* MapViewController.swift */,
 				A3C261F52D9E908400105F4A /* ListViewSwiftUI.swift */,
 				A3C261F32D9E7E6E00105F4A /* TitleViewSwiftUI.swift */,
+				A3C261F72D9EC08100105F4A /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				424C31C42B30A72300279238 /* Model.swift in Sources */,
+				A3C261F82D9EC08100105F4A /* DetailView.swift in Sources */,
 				A3C261F42D9E7E6E00105F4A /* TitleViewSwiftUI.swift in Sources */,
 				424C31C82B30A78B00279238 /* Service.swift in Sources */,
 				A3C261F62D9E908400105F4A /* ListViewSwiftUI.swift in Sources */,
